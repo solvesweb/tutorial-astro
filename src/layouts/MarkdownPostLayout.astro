@@ -7,5 +7,32 @@ import BaseLayout from "./BaseLayout.astro";
   
   <p>Escrito por {frontmatter.author}</p>
   <p>Publicado el: {frontmatter.pubDate.slice(0, 10)}</p>
+
+  <div class="tags">
+    {frontmatter.tags.map((tag) => (
+      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+    ))}
+  </div>
   <slot />
 </BaseLayout>
+
+<style>
+  a {
+      color: #00539F;
+      text-decoration: none;
+    }
+  
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    .tag {
+      margin: 0.25em;
+      border: dotted 1px #a1a1a1;
+      border-radius: .5em;
+      padding: .5em 1em;
+      font-size: 1.15em;
+      background-color: #e2eff2;
+    }
+</style>
